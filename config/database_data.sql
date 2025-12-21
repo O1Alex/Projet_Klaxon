@@ -33,3 +33,10 @@ INSERT INTO users (first_name, last_name, phone, email ) VALUES
 ('Lambert', 'Hugo', '0611223366', 'hugo.lambert@email.fr'),
 ('Masson', 'Julie', '0733445566', 'julie.masson@email.fr'),
 ('Henry', 'Arthur', '0666554433', 'arthur.henry@email.fr');
+
+-- Création utilisateur
+UPDATE `users` SET `password` = 'user123' WHERE `users`.`id` = 2;
+
+-- Création administateur
+UPDATE `users` SET `password` = 'admin123' WHERE `users`.`id` = 1;
+UPDATE `users` SET `role` = 'admin' WHERE `users`.`id` = 1;

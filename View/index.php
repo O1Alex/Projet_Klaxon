@@ -4,6 +4,10 @@ require "../Controller/TrajetController.php";
 $trajetController=new TrajetController();
 $trajets=$trajetController->getDisponibleTrajet();
 
+//verifier que le bouton details est cliqué
+$showModal=isset($_GET['id']);
+$modalTrajetId=$_GET['id']?? 0;
+$modalDetails=$trajetController->getDetailsTrajet($modalTrajetId)
 
 ?>
 
@@ -16,6 +20,8 @@ $trajets=$trajetController->getDisponibleTrajet();
 </head>
 <body>
     <?php include 'header.php' ?>
+
+    <!-- Tableau des trajets -->
     <table>
         <tr>
             <th>Ville départ</th>
@@ -48,9 +54,34 @@ $trajets=$trajetController->getDisponibleTrajet();
                                     <button type="submit" onclick="return confirm('supprimer?')">Supprimer</button>
                                 </form>
                             </td>
-                <?php }}}?>
+                <?php }}?>
             </tr>
+        <?php } ?>
     </table>
     
+    <!-- Modale -->
+    <?php if($showModal && $modalDetails){?>
+        <div class="modal fade show" tabindex="-1" aria-modal="true" style="display:block">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <a href="index.php" class="btn-close"></a>
+                    </div>
+    
+                    <div class="modal-body">
+                        <p><strong>Contact : </strong> <?php echo $modalDetails['first_name']?><?php echo $modalDetails['last_name']?></p>
+                        <p><strong> Téléphone : </strong><?php echo $modalDetails['phone']?></p>
+                        <p><strong>Email : </strong><?php echo $modalDetails['email']?></p>
+                        <p><strong>Nombre total de places : </strong><?php echo $modalDetails['total_seats']?></p>
+                    </div>
+    
+                    <div class="modal-footer">
+                        <a href="index.php" class="btn btn-secondary">Fermer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php }?>
 </body>
 </html>
