@@ -12,7 +12,7 @@ INSERT INTO agences(city_name) VALUES
 ('Rennes'),
 ('Reims');
 
-INSERT INTO users (first_name, last_name, phone, email) VALUES
+INSERT INTO users (first_name, last_name, phone, email ) VALUES
 ('Martin', 'Alexandre', '0612345678', 'alexandre.martin@email.fr'),
 ('Dubois', 'Sophie', '0698765432', 'sophie.dubois@email.fr'),
 ('Bernard', 'Julien', '0622446688', 'julien.bernard@email.fr'),
