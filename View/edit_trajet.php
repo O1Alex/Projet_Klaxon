@@ -41,9 +41,9 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     $trajet->setTotalSeats($_POST['total_seats']);
     $trajet->setAvailableSeats($_POST['available_seats']);
     $trajet->setPersonContactId($_SESSION['user_id']);
-    
-    
-   $result= $trajetController->updateUserTrajet($trajet,$_SESSION['user_id'],$trajetId);
+        
+        
+    $result= $trajetController->updateUserTrajet($trajet,$_SESSION['user_id'],$trajetId);
 
     if($result['success']){
         header('Location:index.php?updated=1');
