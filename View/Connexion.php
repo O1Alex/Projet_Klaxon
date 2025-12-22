@@ -10,7 +10,7 @@ $error='';
 
 if($_SERVER['REQUEST_METHOD']==='POST'){
     if($userController->Connexion($_POST["email"],$_POST['password'])){
-        header('Location:header.php');//redirection
+        header('Location:index.php');
         exit;
     }
     else{

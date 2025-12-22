@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "../Controller/TrajetController.php";
+require_once "../Controller/TrajetController.php";
 
 $trajetController=new TrajetController();
 $trajetId=$_POST['id_trajet'];

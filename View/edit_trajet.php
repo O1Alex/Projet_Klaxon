@@ -4,6 +4,7 @@ require_once "../Controller/TrajetController.php";
 require_once "../Controller/AgenceController.php";
 require_once "../Model/Trajet.php";
 
+
 session_start();
 
 //Vérification connexion de l'utilisateur
@@ -22,6 +23,7 @@ if(!$trajetDetails){
     header('Location:index.php');
     exit();
 }
+
 //Vérification appartenance du trajet de l'utilisateur
 if(!$trajetController->isAuthor($_SESSION['user_id'],$trajetId) && $_SESSION['user_role']!='admin'){
     header('Location:index.php');
@@ -79,6 +81,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
     <!-- Formulaire de modification du trajet -->
     <form method="POST">
+
         <label>Agence de départ</label>
         <select name="start_agency_id" required>
             <?php foreach($agences as $agence){?>
