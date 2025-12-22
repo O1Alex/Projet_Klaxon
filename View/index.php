@@ -1,24 +1,25 @@
 <?php
 session_start();
-//Redirection vers page d'accueil concerné
+//Redirection vers page concerné
 
     if(isset($_SESSION['user_id'])){
         
         //Administrateur
         if($_SESSION['user_role']=='admin'){
-            header('Location: homepage/admin_homepage.php');
+            header('Location:admin_dashboard.php');
             exit();          
         
         // Utilisateur normal
         } else {
-            header('Location: homepage/user_homepage.php');
+            header('Location:user_homepage.php');
             exit();
         }
                  
     // Utilisateur non connecté
     } else {
-        header('Location: homepage/homepage.php');
+        header('Location:homepage.php');
         exit();
     } 
+
     
 ?>

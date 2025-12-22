@@ -1,6 +1,6 @@
 <?php
 
-require_once ".../Controller/TrajetController.php";
+require_once "../Controller/TrajetController.php";
 
 $trajetController=new TrajetController();
 $trajets=$trajetController->getDisponibleTrajet();
