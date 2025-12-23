@@ -25,35 +25,45 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    
     <title>Connexion</title>
 </head>
 
 <body>
-    <h2>Connexion</h2>
 
-    <!-- Erreurs -->
-    <?php 
-        if ($error) {?>
-        <p style="color:red"><?=$error?></p>
-        <?php }; ?>
+    <div class="container vh-100 d-flex justify-content-center align-items-center">
+        <div class="card border-2" style="width: 25rem;">
+            <div class="card-body">
+                <h2 class="card-title text-center">Connexion</h2>
+                <!-- Erreurs -->
+                <?php 
+                    if ($error) {?>
+                        <div class="alert alert-danger text-center" role="alert">
+                            <?=$error?>
+                        </div>
+                    <?php }; ?>
 
+                <!-- Formulaire de connexion -->
+                <form class="card-text text-center mb-3" method="POST">
+                    <div>
+                        <label>Email</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <br>
 
-    <!-- Formulaire de connexion -->
-    <form method="POST">
-        <div>
-            <label>Email</label>
-            <input type="email" name="email" required>
+                    <div>
+                        <label>Mot de passe</label>
+                        <input type="password" name="password" required>
+                    </div>
+                    <br>
+
+                    <button class="rounded" type="submit">Se connecter</button>
+                </form>
+                
+            </div>
         </div>
-        <br>
+    </div>
 
-        <div>
-            <label>Mot de passe</label>
-            <input type="password" name="password" required>
-        </div>
-        <br>
-
-        <button type="submit">Se connecter</button>
-    </form>
-    
 </body>
 </html>

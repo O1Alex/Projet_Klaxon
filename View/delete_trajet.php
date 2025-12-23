@@ -3,14 +3,14 @@ session_start();
 require_once "../Controller/TrajetController.php";
 
 $trajetController=new TrajetController();
-$trajetId=$_POST['id_trajet'];
+$trajetId=$_POST['trajet_id'];
 
 $result=$trajetController->deleteUserTrajet($trajetId,$_SESSION['user_id']);
 
 if($result['success']){
-    header('Location:index.php?deleted=1');
+    header('Location:user_homepage.php?deleted=1');
  } else{
-    header('Location:index.php?error=delete'); 
+    header('Location:user_homepage.php?error=delete'); 
 }
 exit();
 

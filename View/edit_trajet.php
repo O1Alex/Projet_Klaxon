@@ -64,6 +64,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <title>Modifier le trajet</title>
 </head>
 <body>
@@ -75,8 +76,10 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
     <!-- Erreurs -->
     <?php if(isset($errors)){?>
-    <?php foreach ($errors as $error){?>
-        <?php echo $error ?>
+        <?php foreach ($errors as $error){?>
+            <div class="alert alert-warning" role="alert">
+                <?php echo $error ?>
+            </div>
         <?php }} ?>
 
     <!-- Formulaire de modification du trajet -->
