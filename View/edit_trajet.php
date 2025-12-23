@@ -20,7 +20,7 @@ $trajetDetails=$trajetController->getDetailsTrajet($trajetId);
 
 //Vérification existance du trajet
 if(!$trajetDetails){
-    header('Location:index.php');
+    header('Location:homepage.php');
     exit();
 }
 

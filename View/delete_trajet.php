@@ -8,9 +8,9 @@ $trajetId=$_POST['trajet_id'];
 $result=$trajetController->deleteUserTrajet($trajetId,$_SESSION['user_id']);
 
 if($result['success']){
-    header('Location:user_homepage.php?deleted=1');
+    header('Location:homepage.php?deleted=1');
  } else{
-    header('Location:user_homepage.php?error=delete'); 
+    header('Location:homepage.php?error=delete'); 
 }
 exit();
 
