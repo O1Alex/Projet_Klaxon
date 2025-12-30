@@ -1,4 +1,5 @@
 <?php
+
 if(session_status()==PHP_SESSION_NONE){
 session_start();
 }
@@ -8,7 +9,6 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_role']!= 'admin' ){
     exit();
 }
 
-//inclure le header 
 include "../header.php";
  
 $section=$_GET['section']?? '';

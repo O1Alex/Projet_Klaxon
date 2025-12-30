@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__. '/../Config/database.php';
-require_once '../Model/Trajet.php';
+require_once __DIR__.'/../Model/Trajet.php';
 
 class TrajetController{
 

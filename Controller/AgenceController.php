@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__.'/../config/database.php';
-require '../Model/Agence.php';
+require __DIR__.'/../Model/Agence.php';
 
 class AgenceController{
 
