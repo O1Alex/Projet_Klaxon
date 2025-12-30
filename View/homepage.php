@@ -49,7 +49,7 @@ $modalDetails=$trajetController->getDetailsTrajet($modalTrajetId)
                     <td><?php echo $trajet['end_city']?></td>
                     <td><?php echo $arr->format('Y-m-d')?></td>
                     <td><?php echo $arr->format('H:i')?></td>
-                    <td><?php echo $trajet['total_seats']?></td>
+                    <td><?php echo $trajet['available_seats']?></td>
 
                     <?php if(isset($_SESSION['user_id'])){?>
                         <td>

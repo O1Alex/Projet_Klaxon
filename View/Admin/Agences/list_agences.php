@@ -19,7 +19,7 @@ $agences=$agenceController->getAllAgences();
         <table class="table table-bordered table-striped">
             <thead class="table-dark">    
                 <tr>
-                    <th>Listes des différentes agences disponibles</th>
+                    <th>Listes des différentes agences</th>
                 </tr>
             </thead>
 
