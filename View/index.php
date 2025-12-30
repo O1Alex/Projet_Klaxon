@@ -6,7 +6,7 @@ session_start();
         
         //Administrateur
         if($_SESSION['user_role']=='admin'){
-            header('Location:admin_dashboard.php');
+            header('Location:Admin/admin_dashboard.php');
             exit();          
         
         // Utilisateur normal

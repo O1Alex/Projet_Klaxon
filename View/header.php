@@ -27,7 +27,7 @@ session_start();
                     <a href="admin_dashboard.php?section=agences"><button>Agences</button></a>
                     <a href="admin_dashboard.php?section=trajets"><button>Trajets</button></a>
                     <span><?php echo htmlspecialchars("Bonjour ".$_SESSION['user_name']); ?></span>
-                    <a href="Deconnexion.php"><button type="submit">Déconnexion</button></a>
+                    <a href="../Deconnexion.php"><button class="btn btn-dark rounded" type="submit">Déconnexion</button></a>
                     
                 </nav>
                
@@ -36,17 +36,17 @@ session_start();
             <?php } else { ?>
                 <div style="margin:0 20px">
                     <form style="display:inline" action="create_trajet.php">
-                        <button type="submit">Proposer un trajet</button>
+                        <button class="btn btn-dark rounded" type="submit">Proposer un trajet</button>
                     </form>
                     <span><?php echo htmlspecialchars("Bonjour ".$_SESSION['user_name']); ?></span>
-                    <a href="Deconnexion.php"><button type="submit">Déconnexion</button></a>
+                    <a href="Deconnexion.php"><button class="btn btn-dark rounded" type="submit">Déconnexion</button></a>
                 </div>
             <?php } ?>
 
         <!-- Utilisateur non connecté -->
         <?php } else { ?>
             <form action="Connexion.php">
-                <button type="submit">Formulaire de Connexion</button>
+                <button class="btn btn-dark rounded" type="submit">Formulaire de Connexion</button>
             </form>
         <?php } ?>
     </div>
