@@ -215,6 +215,33 @@ class TrajetController{
     return ['success'=>true, "message"=>"Trajet supprimé avec succées"];
 
     }
+
+    //Liste des trajets pour l'administrateur
+    public function getAllTrajetsAdmin(){
+        $sql="SELECT t.*,
+        a1.city_name as start_city,
+        a2.city_name as end_city,
+        u.first_name,
+        u.last_name,
+        u.email,
+        u.phone
+        FROM trajets t 
+        JOIN agences a1 ON t.start_agency_id=a1.id
+        JOIN agences a2 ON t.end_agency_id=a2.id
+        JOIN users u ON t.person_contact_id=u.id";
+       
+       $db=Config::Connexion();
+       
+       try{
+            $query=$db->prepare($sql);
+            $query->execute();
+            $trajets=$query->fetchAll();
+            return $trajets;
+        }
+        catch(PDOException $e){
+            echo "Erreur".$e->getMessage();
+        } 
+    }
 }
 
 ?>

@@ -21,17 +21,52 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     if(empty($city_name)){
         $errors[]="Le nom de la ville est obligatoire";
     }
-else{
-    $existingAgence=$agenceController->getAllAgences();
-    foreach($existingAgence as $agence){
-        if(strlower($agence['city_name'])===strlower($city_name)){
-            $errors[]="Cette ville existe déja";
+    else{
+        $existingAgence=$agenceController->getAllAgences();
+        foreach($existingAgence as $agence){
+            if(strtolower($agence['city_name'])===strtolower($city_name)){
+                $errors[]="Cette ville existe déja";
+            }
         }
     }
 }
+
+if(empty($errors)){
+    $agence=new Agence();
+    $agence->setCityName($city_name);
+    $agenceController->createAgence($agence);
+    header('Location:../admin_dashboard.php?section=agences&created=1');
+    exit();
 }
 
-
-
-
 ?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Création agence ADMIN</title>
+</head>
+
+<body>
+    <?php include "../../header.php"?>
+
+    <!-- Affichage des erreurs -->
+    <?php if(!empty($errors)){?>
+        <?php foreach($errors as $error){?>
+            <p><?php echo $error ?></p>
+            <?php } } ?>
+
+    <form method="POST">
+        <label>Nom de l'agence</label>
+        <input type="text" name="city_name">
+        <button type="submit">Créer l'agence</button>
+        <a href="../admin_dashboard.php?section=agences" >
+            <button type="reset"> Annuler</button>
+        </a>
+    </form>
+    
+    <?php include "../../footer.php"?>
+</body>
+</html>

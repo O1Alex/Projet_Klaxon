@@ -41,11 +41,9 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modification agence</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+    <title>Modification agence ADMIN</title>
 </head>
+
 <body>
     <?php include "../../header.php"?>
     <br>
@@ -53,9 +51,11 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         <label>Nom de l'agence</label>
         <input type="text" name="city_name" value="<?php echo $agenceDetails['city_name']?>">
         <button type="submit">Enregistrer les modifications</button>
-<a href="../admin_dashboard.php?section=agences"><button type="reset">Annuler</button></a>
-
-</form>
-<?php include "../../footer.php"?>
+        <a href="../admin_dashboard.php?section=agences">
+            <button type="reset">Annuler</button>
+        </a>
+    </form>
+    <br>
+    <?php include "../../footer.php"?>
 </body>
 </html>
