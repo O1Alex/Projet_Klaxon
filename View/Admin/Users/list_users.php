@@ -16,7 +16,7 @@ $users=$userController->getUser();
 <body class="d-flex flex-column min-vh-100">
     <main class="container my-5">
 
-        <h2 class="mb-4">Liste des utilisateurs</h2>
+        <h2 class="mb-4 text-center">Liste des utilisateurs</h2>
         <div class="table-responsive">
             <table class="table table-striped table-bordered align-middle text-center">
                 <thead class="table-dark">    

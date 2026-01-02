@@ -32,19 +32,19 @@ if(session_status()==PHP_SESSION_NONE){
                         <a href="admin_dashboard.php?section=users" class="btn btn-secondary btn-sm"> Utilisateurs </a>
                         <a href="admin_dashboard.php?section=agences" class="btn btn-secondary btn-sm"> Agences </a>
                         <a href="admin_dashboard.php?section=trajets" class="btn btn-secondary btn-sm"> Trajets </a>
-                    
+                        <span class="fw-semibold text-nowrap">
+                            <?php echo htmlspecialchars("Bonjour " . $_SESSION['user_name']); ?>
+                        </span>
+                        <a href="../Deconnexion.php" class="btn btn-dark btn-sm"> Déconnexion </a>
 
                     <!-- Utilisateur normal -->
                     <?php } else { ?>
                         <a href="create_trajet.php" class="btn btn-dark btn-sm"> Proposer un trajet </a>
+                        <span class="fw-semibold text-nowrap">
+                            <?php echo htmlspecialchars("Bonjour " . $_SESSION['user_name']); ?>
+                        </span>
+                        <a href="Deconnexion.php" class="btn btn-dark btn-sm"> Déconnexion </a>
                     <?php } ?>
-
-                    <!-- Administrateur et Utilisateur normal -->
-                    <span class="fw-semibold text-nowrap">
-                        <?php echo htmlspecialchars("Bonjour " . $_SESSION['user_name']); ?>
-                    </span>
-
-                    <a href="../Deconnexion.php" class="btn btn-dark btn-sm"> Déconnexion </a>
                 
                 <!-- Utilisateur non connecté -->
                 <?php } else { ?>
