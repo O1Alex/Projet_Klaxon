@@ -42,56 +42,54 @@ $modalDetails=$trajetController->getDetailsTrajet($modalTrajetId)
                         <th>Date</th>
                         <th>Heure</th>
                         <th>Places</th>
-                        <th>Actions</th>
+                        <?php if(isset($_SESSION['user_id'])){?>
+                            <th>Actions</th>
+                        <?php }  ?>
                     </tr>
                 </thead>
 
                 <tbody>
-                <?php foreach ($trajets as $trajet) {
-                    $dep = new DateTime($trajet['departure_date']);
-                    $arr = new DateTime($trajet['arrival_date']);
-                ?>
-                    <tr>
-                        <td><?= htmlspecialchars($trajet['start_city']) ?></td>
-                        <td><?= $dep->format('d/m/Y') ?></td>
-                        <td><?= $dep->format('H:i') ?></td>
-                        <td><?= htmlspecialchars($trajet['end_city']) ?></td>
-                        <td><?= $arr->format('d/m/Y') ?></td>
-                        <td><?= $arr->format('H:i') ?></td>
-                        <td><?= (int)$trajet['available_seats'] ?></td>
+                    <?php foreach($trajets as $trajet){
+                        $dep = new DateTime($trajet['departure_date']);
+                        $arr = new DateTime($trajet['arrival_date']);?>
+                        <tr>
+                            <td><?php echo $trajet['start_city']?></td>
+                            <td><?php echo $dep->format('Y-m-d')?></td>
+                            <td><?php echo $dep->format('H:i')?></td>
+                            <td><?php echo $trajet['end_city']?></td>
+                            <td><?php echo $arr->format('Y-m-d')?></td>
+                            <td><?php echo $arr->format('H:i')?></td>
+                            <td><?php echo $trajet['total_seats']?></td>
+                            <?php if(isset($_SESSION['user_id'])){?>
+                                        <?php $isAuthor=$trajetController->isAuthor($_SESSION['user_id'],$trajet['id']) ?>
+                                    <?php if ($isAuthor){?>
+                                <td>
+                                    <div class="d-flex justify-content-center gap-3">
 
-                        <td>
-                            <div class="d-flex justify-content-center gap-3">
+                                        <!-- Affichage information du trajet (modale) -->
+                                        <a href="homepage.php?id=<?= $trajet['id'] ?>" class="text-dark">
+                                            <i class="bi bi-eye fs-5"></i>
+                                        </a>
 
-                                <!-- Affichage information du trajet (modale) -->
-                                <a href="homepage.php?id=<?= $trajet['id'] ?>" class="text-dark">
-                                    <i class="bi bi-eye fs-5"></i>
-                                </a>
+                                        <!-- Modification du trajet -->
+                                        <a href="edit_trajet.php?id=<?= $trajet['id'] ?>" class="text-dark">
+                                            <i class="bi bi-pencil-square fs-5"></i>
+                                        </a>
 
-                                <?php if (isset($_SESSION['user_id'])) {
-                                    $isAuthor = $trajetController->isAuthor($_SESSION['user_id'], $trajet['id']);
-                                    if ($isAuthor) { ?>
-
-                                    <!-- Modification du trajet -->
-                                    <a href="edit_trajet.php?id=<?= $trajet['id'] ?>" class="text-dark">
-                                        <i class="bi bi-pencil-square fs-5"></i>
-                                    </a>
-
-                                    <!-- Suppression du trajet -->
-                                    <form action="delete_trajet.php" method="POST" class="d-inline">
-                                        <input type="hidden" name="trajet_id" value="<?= $trajet['id'] ?>">
-                                        <button type="submit"
-                                                class="btn p-0 text-dark"
-                                                onclick="return confirm('Voulez-vous vraiment supprimer ce trajet ?')">
-                                            <i class="bi bi-trash3 fs-5"></i>
-                                        </button>
-                                    </form>
-
-                                <?php }} ?>
-                            </div>
-                        </td>
-                    </tr>
-                <?php } ?>
+                                        <!-- Suppression du trajet -->
+                                        <form action="delete_trajet.php" method="POST" class="d-inline">
+                                            <input type="hidden" name="trajet_id" value="<?= $trajet['id'] ?>">
+                                            <button type="submit"
+                                                    class="btn p-0 text-dark"
+                                                    onclick="return confirm('Voulez-vous vraiment supprimer ce trajet ?')">
+                                                <i class="bi bi-trash3 fs-5"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            <?php }} ?>
+                        </tr>
+                    <?php } ?>
                 </tbody>
             </table>
         </div>          
@@ -126,4 +124,5 @@ $modalDetails=$trajetController->getDetailsTrajet($modalTrajetId)
     <?php include 'footer.php' ?>
 
 </body>
+
 </html>
