@@ -12,7 +12,7 @@ if(session_status()==PHP_SESSION_NONE){
             <!-- Administrateur -->
             <?php if (isset($_SESSION['user_id']) && $_SESSION['user_role'] === 'admin') { ?>
                 <a class="navbar-brand fw-bold" href="admin_dashboard.php">
-                    Touche pas au Klaxon
+                    <h2>Touche pas au Klaxon</h2>
                 </a>
             <!-- Autre -->
             <?php } else { ?>
