@@ -25,14 +25,14 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
     <title> Page de connexion</title>
     
 </head>
 
 <body>
 
-    <div class="container vh-100 d-flex justify-content-center align-items-center">
+    <div class="container-connexion vh-100 d-flex justify-content-center align-items-center">
         <div class="card border-2" style="width: 25rem;">
             <div class="card-body">
                 <h2 class="card-title text-center">Connexion</h2>

@@ -29,7 +29,6 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             }
         }
     }
-}
 
 if(empty($errors)){
     $agence=new Agence();
@@ -37,6 +36,8 @@ if(empty($errors)){
     $agenceController->createAgence($agence);
     header('Location:../admin_dashboard.php?section=agences&created=1');
     exit();
+
+}
 }
 
 ?>

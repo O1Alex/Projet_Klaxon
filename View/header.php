@@ -3,33 +3,35 @@ if(session_status()==PHP_SESSION_NONE){
     session_start();
 }
 ?>
-
+<head>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom px-4">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light  border-bottom px-4">
+        <div class="header-container container-fluid">
 
         <!-- Header gauche -->
             <!-- Administrateur -->
             <?php if (isset($_SESSION['user_id']) && $_SESSION['user_role'] === 'admin') { ?>
-                <a class="navbar-brand fw-bold" href="admin_dashboard.php">
-                    <h2>Touche pas au Klaxon</h2>
+                <a class="title navbar-brand fw-bold" href="admin_dashboard.php">
+                    <h1>Touche pas au Klaxon</h1>
                 </a>
             <!-- Autre -->
             <?php } else { ?>
-                <span class="navbar-brand fw-bold">
-                    Touche pas au Klaxon
+                <span class=" title navbar-brand fw-bold">
+                    <h1>Touche pas au Klaxon</h1>
                 </span>
             <?php } ?>
 
         <!-- Header droite -->
-            <div class="d-flex align-items-center gap-3 ms-auto">
+            <div class=" header-right d-flex align-items-center gap-3 ms-auto">
             
             <!-- Utilisateur connecté -->
                 <?php if (isset($_SESSION['user_id'])) { ?>
 
                     <!-- Administrateur -->
                     <?php if ($_SESSION['user_role'] === 'admin') { ?>
-                        <a href="admin_dashboard.php?section=users" class="btn btn-secondary btn-sm"> Utilisateurs </a>
+                        <a href="admin_dashboard.php?section=users" class="btn btn-secondary btn-sm mr-3"> Utilisateurs </a>
                         <a href="admin_dashboard.php?section=agences" class="btn btn-secondary btn-sm"> Agences </a>
                         <a href="admin_dashboard.php?section=trajets" class="btn btn-secondary btn-sm"> Trajets </a>
                         <span class="fw-semibold text-nowrap">

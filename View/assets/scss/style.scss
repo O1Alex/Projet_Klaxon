@@ -1,0 +1,47 @@
+//Couleurs
+$primary-color: #0074c7;
+$secondary-color: #00497c;
+$light-color: #f1f8fc;
+$dark-color: #384050;
+$danger-color: #cd2c2e;
+$succes-color: #82b864;
+
+
+//Importation bootstrap
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+
+
+//Header
+.navbar{
+    background-color: $light-color;
+    .header-container{
+        .title{
+        color: $secondary-color;
+        }
+
+        .header-right{
+            .btn-menu{
+               text-decoration: none;
+               background-color: $primary-color;
+
+            }
+            .btn{
+                padding:8px;
+                background-color:$color-primary ;
+                color:$color-light;
+                border:none;
+                border-radius:4px;
+                cursor:pointer;
+
+            }
+        }
+    }
+}
+
+
+//Page de connexion
+.container-connexion{
+    .card-title{
+        color: $secondary-color;
+    }
+}
