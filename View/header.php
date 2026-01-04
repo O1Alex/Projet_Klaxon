@@ -6,6 +6,7 @@ if(session_status()==PHP_SESSION_NONE){
 <head>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <header>
     <nav class="navbar navbar-expand-lg navbar-light  border-bottom px-4">
         <div class="header-container container-fluid">
