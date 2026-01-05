@@ -47,15 +47,17 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         
     $result= $trajetController->updateUserTrajet($trajet,$_SESSION['user_id'],$trajetId);
 
-    if($result['success']){
-        header('Location:index.php?updated=1');
-        exit();
+     if ($result['success']) {
+    $_SESSION['flash_success'] = "Le trajet a été modifié avec succès";
+    header('Location: homepage.php');
+    exit();
+}
 
-    }
     else{
      $errors=$result['errors']   ;
     }
 }
+
 ?>
 
 

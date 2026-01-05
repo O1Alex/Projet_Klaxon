@@ -1,0 +1,8 @@
+parameters:
+    level: 5
+    paths:
+        - Controller
+        - Model
+        - config
+    excludePaths:
+        - View/*   # ignore toutes les vues

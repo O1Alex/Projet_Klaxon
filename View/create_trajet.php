@@ -29,10 +29,12 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
     $result=$trajetController->createTrajet($trajet);
 
-    if($result['success']){
-        header('Location:index.php?created=1');
-        exit();
-    }
+    if ($result['success']) {
+    $_SESSION['flash_success'] = "Le trajet a été créé avec succès";
+    header('Location: homepage.php');
+    exit();
+}
+
     else{
         $errors=$result['errors'];
     }

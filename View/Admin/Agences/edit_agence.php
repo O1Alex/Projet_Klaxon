@@ -35,6 +35,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     header("Location:../admin_dashboard.php?section=agences&updated=1");
     exit();
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">

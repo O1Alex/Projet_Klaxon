@@ -24,9 +24,18 @@ $modalDetails=$trajetController->getDetailsTrajet($modalTrajetId)
 </head>
 <body class="list d-flex flex-column min-vh-100">
 
+    
     <?php include 'header.php' ?>
 
     <main class="container-list container my-5">
+
+    <!-- Message succès -->
+    <?php if (isset($_SESSION['flash_success'])) : ?>
+    <div class="alert alert-success text-center">
+        <?= $_SESSION['flash_success']; ?>
+    </div>
+    <?php unset($_SESSION['flash_success']); ?>
+    <?php endif; ?>
 
         <h2 class="title-list mb-4 text-center">Trajets proposés</h2>
         <div class="table-responsive">
@@ -59,7 +68,7 @@ $modalDetails=$trajetController->getDetailsTrajet($modalTrajetId)
                             <td><?php echo $trajet['end_city']?></td>
                             <td><?php echo $arr->format('Y-m-d')?></td>
                             <td><?php echo $arr->format('H:i')?></td>
-                            <td><?php echo $trajet['total_seats']?></td>
+                            <td><?php echo $trajet['available_seats']?></td>
                             <?php if(isset($_SESSION['user_id'])){?>
                         
                             <td>
