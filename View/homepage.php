@@ -17,23 +17,23 @@ $modalDetails=$trajetController->getDetailsTrajet($modalTrajetId)
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <title>Page d'accueil</title>
 
-    <title>Document</title>
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body class="list d-flex flex-column min-vh-100">
 
     <?php include 'header.php' ?>
 
-    <main class="container my-5">
+    <main class="container-list container my-5">
 
-        <h2 class="mb-4">Trajets proposés</h2>
+        <h2 class="title-list mb-4 text-center">Trajets proposés</h2>
         <div class="table-responsive">
 
             <!-- Tableau des trajets -->
-            <table class="table table-striped table-bordered align-middle text-center">
-                <thead class="table-dark">
+            <table class="table-list align-middle text-center">
+                <thead class="table-head">
                     <tr>
                         <th>Départ</th>
                         <th>Date</th>
@@ -48,7 +48,7 @@ $modalDetails=$trajetController->getDetailsTrajet($modalTrajetId)
                     </tr>
                 </thead>
 
-                <tbody>
+                <tbody class="table-body">
                     <?php foreach($trajets as $trajet){
                         $dep = new DateTime($trajet['departure_date']);
                         $arr = new DateTime($trajet['arrival_date']);?>

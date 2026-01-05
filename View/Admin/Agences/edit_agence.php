@@ -37,54 +37,54 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <title>Modification agence ADMIN</title>
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body class="edit-agence d-flex flex-column min-vh-100">
 
     <?php include "../../header.php"; ?>
 
-    <main class="flex-fill d-flex align-items-center justify-content-center">
+    <!-- Affichage des erreurs -->
+        <?php if(!empty($errors)){?>
+            <?php foreach($errors as $error){?>
+                <p><?php echo $error ?></p>
+                <?php } } ?>
+   
+    <main class="flex-fill container my-5 pt-4">
 
-        <div class="card shadow-sm" style="max-width: 500px; width: 100%;">
-            <div class="card-body">
+        <h2 class="edit-agence-title text-center mb-4">
+            Modifier une agence
+        </h2>
 
-                <h4 class="card-title mb-4 text-center">
-                    Modifier une agence
-                </h4>
+        <form method="POST" class="form-admin mx-auto">
 
-                <form method="POST">
-
-                    <div class="mb-3">
-                        <label class="form-label">Nom de l'agence</label>
-                        <input type="text"
-                               name="city_name"
-                               class="form-control"
-                               value="<?= htmlspecialchars($agenceDetails['city_name']) ?>"
-                               required>
-                    </div>
-
-                    <div class="d-flex justify-content-between mt-4">
-                        <button type="submit" class="btn btn-dark">
-                            Enregistrer
-                        </button>
-
-                        <a href="../admin_dashboard.php?section=agences"
-                           class="btn btn-outline-secondary">
-                            Annuler
-                        </a>
-                    </div>
-
-                </form>
-
+            <div class="row align-items-center">
+                <label class="col-md-4 col-form-label">
+                    Nom de l’agence
+                </label>
+                <div class="col-md-8">
+                    <input type="text" name="city_name" class="form-control"
+                    value="<?= htmlspecialchars($agenceDetails['city_name']) ?>" required>
+                </div>
             </div>
-        </div>
+
+            <div class="d-flex justify-content-between mt-4">
+                <button type="submit" class="btn-save py-2 px-4">
+                    Enregistrer
+                </button>
+
+                <a href="../admin_dashboard.php?section=agences" class="btn-cancel py-2 px-4">
+                    Annuler
+                </a>
+            </div>
+
+        </form>
 
     </main>
 

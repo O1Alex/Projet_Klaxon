@@ -30,42 +30,43 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
     
 </head>
 
-<body>
+<body class="page-connexion d-flex flex-column min-vh-100">
 
-    <div class="container-connexion vh-100 d-flex justify-content-center align-items-center">
-        <div class="card border-2" style="width: 25rem;">
-            <div class="card-body">
-                <h2 class="card-title text-center">Connexion</h2>
-                <br>
+    <main class="container my-5">
+        <div class="container-connexion d-flex justify-content-center mt-5">
+            <div class="login-box p-4 ">
+                <h2 class="connexion-title text-center mb-4">Connexion</h2>
 
-                <!-- Erreurs -->
-                <?php 
-                    if ($error) {?>
-                        <div class="alert alert-danger text-center" role="alert">
-                            <?=$error?>
-                        </div>
-                    <?php }; ?>
-
-                <!-- Formulaire de connexion -->
-                <form class="card-text text-center mb-3" method="POST">
-                    <div>
-                        <label>Email :</label>
-                        <input type="email" name="email" required>
+                <?php if (!empty($error)) { ?>
+                    <div class="alert alert-danger text-center">
+                        <?= htmlspecialchars($error) ?>
                     </div>
-                    <br>
+                <?php } ?>
 
-                    <div>
-                        <label>Mot de passe :</label>
-                        <input type="password" name="password" required>
+                <form method="POST" class="form-connexion">
+
+                    <div class="mb-3">
+                        <label class="form-label">Email :</label>
+                        <input type="email" name="email" class="form-control" required>
                     </div>
-                    <br>
 
-                    <button class="btn btn-dark rounded" type="submit">Se connecter</button>
+                    <div class="mb-4">
+                        <label class="form-label">Mot de passe :</label>
+                        <input type="password" name="password" class="form-control" required>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn-connect">
+                            Se connecter
+                        </button>
+                    </div>
+
                 </form>
-                
             </div>
         </div>
-    </div>
+    </main>
 
+    <?php include "footer.php" ?>
+    
 </body>
 </html>

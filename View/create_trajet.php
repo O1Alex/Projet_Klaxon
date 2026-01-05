@@ -45,88 +45,112 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <title>Créer un trajet</title>
 </head>
-<body class="d-flex flex-column min-vh-100">
-    <?php include 'header.php'?>
-   
-    <main class="flex-fill d-flex align-items-center justify-content-center">
+<body class="create d-flex flex-column min-vh-100">
+    <?php include 'header.php' ?>
 
-        <div class="card shadow-sm" style="max-width: 500px; width: 100%;">
-            <div class="card-body">
-                <h3 class="card-title mb-4 text-center">
-                    Proposer un trajet
-                </h3>
-                <!-- Erreurs -->
-                <?php if(isset($errors)){?>
-                    <?php foreach ($errors as $error){?>
-                        <?php echo $error ?>
-                    <?php }}?>
+    <main class="flex-fill container my-5">
+        <h2 class="create-title text-center mb-4">Proposer un trajet</h2>
 
-                <!-- Informations non modifiable -->
-                <div class="mb-3">
-                    <h4>Vos informations de  contact</h4>
-                    <p><strong>Nom : </strong> <?php echo $_SESSION['user_name'] ?>
-                    <p><strong>Email : </strong> <?php echo $_SESSION['user_email'] ?>
-                    <p><strong>Numéro de téléphone : </strong> <?php echo $_SESSION['user_phone'] ?>
+        <!-- Erreurs -->
+        <?php if (!empty($errors)) : ?>
+            <?php foreach ($errors as $error) : ?>
+                <div class="alert alert-warning">
+                    <?= $error ?>
                 </div>
-                <!-- Fomulaire de création -->
-                <form method="POST">
-                    <div class="mb-3">
-                        <label>Agence de départ :</label>
-                        <select name="start_agency_id">
-                            <option value="">Sélectionnez une agence </option>
-                            <?php foreach($agences as $agence){?>
-                                <option value="<?php echo $agence['id']?>">
-                                <?php echo $agence['city_name']?></option>
-                            <?php } ?>
-                        </select>
-                        <br>
+            <?php endforeach; ?>
+        <?php endif; ?>
 
-                        <label>Agence d'arrivé :</label>
-                        <select name="end_agency_id">
-                            <option value="">Sélectionnez une agence </option>
-                            <?php foreach($agences as $agence){?>
-                                <option value="<?php echo $agence['id']?>">
-                                <?php echo $agence['city_name']?></option>
-                            <?php } ?>
-                        </select>
-                        <br>
-
-                        <label>Date de départ </label>
-                        <input type="datetime-local" name="departure_date" required>
-                        <br>
-
-                        <label>Date d'arrivé </label>
-                        <input type="datetime-local" name="arrival_date" required>       
-                        <br>
-
-                        <label>Nombre total des places :</label>
-                        <input type="number" name="total_seats" required>
-                        <br>
-
-                        <label>Nombre de places disponibles:</label>
-                        <input type="number" name="available_seats" required>
-                        <br>
-                    </div> 
-                                   
-                    <div class="d-flex justify-content-between mt-4">
-                        <button type="submit" class="btn btn-dark">
-                            Enregistrer le trajet
-                        </button>
-
-                        <a href="index.php"
-                        class="btn btn-outline-secondary">
-                            Annuler
-                        </a>
-                    </div>
-                </form>
-            </div>
+        <!-- Informations utilisateur -->
+        <div class="info-user mx-auto mb-4 px-3 py-1 text-center">
+            <h4 class="create-title mb-3 ">Vos informations de contact</h4>
+            <p><strong>Nom :</strong> <?= $_SESSION['user_name'] ?></p>
+            <p><strong>Email :</strong> <?= $_SESSION['user_email'] ?></p>
+            <p><strong>Téléphone :</strong> <?= $_SESSION['user_phone'] ?></p>
         </div>
+
+        <!-- Formulaire -->
+        <form method="POST" class="form-admin mx-auto">
+
+            <div class="row align-items-center">
+                <label class="col-md-4 col-form-label">Agence de départ</label>
+                <div class="col-md-8">
+                    <select name="start_agency_id" class="form-select" required>
+                        <option value="">Sélectionnez une agence</option>
+                        <?php foreach ($agences as $agence) : ?>
+                            <option value="<?= $agence['id'] ?>">
+                                <?= $agence['city_name'] ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row align-items-center">
+                <label class="col-md-4 col-form-label">Agence d’arrivée</label>
+                <div class="col-md-8">
+                    <select name="end_agency_id" class="form-select" required>
+                        <option value="">Sélectionnez une agence</option>
+                        <?php foreach ($agences as $agence) : ?>
+                            <option value="<?= $agence['id'] ?>">
+                                <?= $agence['city_name'] ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row align-items-center">
+                <label class="col-md-4 col-form-label">Date de départ</label>
+                <div class="col-md-8">
+                    <input type="datetime-local"
+                           name="departure_date"
+                           class="form-control"
+                           required>
+                </div>
+            </div>
+
+            <div class="row align-items-center">
+                <label class="col-md-4 col-form-label">Date d’arrivée</label>
+                <div class="col-md-8">
+                    <input type="datetime-local"
+                           name="arrival_date"
+                           class="form-control"
+                           required>
+                </div>
+            </div>
+
+            <div class="row align-items-center">
+                <label class="col-md-4 col-form-label">Places totales</label>
+                <div class="col-md-8">
+                    <input type="number" name="total_seats" class="form-control" min="1" required>
+                </div>
+            </div>
+
+            <div class="row align-items-center">
+                <label class="col-md-4 col-form-label">Places disponibles</label>
+                <div class="col-md-8">
+                    <input type="number" name="available_seats" class="form-control" min="0" required>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+                <button type="submit" class="btn-save py-2 px-4">
+                    Enregistrer
+                </button>
+
+                <a href="index.php" class="btn-cancel py-2 px-4">
+                    Annuler
+                </a>
+            </div>
+
+        </form>
+    
     </main>
-    <?php include "footer.php" ?>
+    <?php include 'footer.php' ?>
 
 </body>
 </html>

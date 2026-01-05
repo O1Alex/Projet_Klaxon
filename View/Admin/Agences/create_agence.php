@@ -47,12 +47,12 @@ if(empty($errors)){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <title>Création agence ADMIN</title>
 </head>
 
-<body>
+<body class="create-agence d-flex flex-column min-vh-100">
     <?php include "../../header.php"?>
 
     <!-- Affichage des erreurs -->
@@ -61,15 +61,34 @@ if(empty($errors)){
             <p><?php echo $error ?></p>
             <?php } } ?>
 
-    <form method="POST">
-        <label>Nom de l'agence</label>
-        <input type="text" name="city_name">
-        <button type="submit">Créer l'agence</button>
-        <a href="../admin_dashboard.php?section=agences" >
-            <button type="reset"> Annuler</button>
-        </a>
-    </form>
-    
+    <main class="flex-fill container my-5 pt-4">
+
+        <h2 class="create-agence-title text-center mb-4">
+            Modifier une agence
+        </h2>
+
+        <form method="POST" class="form-admin mx-auto">
+
+            <div class="row align-items-center">
+                <label class="col-md-4 col-form-label">Nom de l'agence</label>
+                <div class="col-md-8">
+                    <input type="text" name="city_name" class="form-control">
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+                <button type="submit" class="btn-save py-2 px-4">
+                    Enregistrer
+                </button>
+
+                <a href="../admin_dashboard.php?section=agences" class="btn-cancel py-2 px-4">
+                    Annuler
+                </a>
+            </div>
+
+        </form>
+    </main>
+
     <?php include "../../footer.php"?>
 </body>
 </html>
