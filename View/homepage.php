@@ -61,15 +61,16 @@ $modalDetails=$trajetController->getDetailsTrajet($modalTrajetId)
                             <td><?php echo $arr->format('H:i')?></td>
                             <td><?php echo $trajet['total_seats']?></td>
                             <?php if(isset($_SESSION['user_id'])){?>
-                                        <?php $isAuthor=$trajetController->isAuthor($_SESSION['user_id'],$trajet['id']) ?>
-                                    <?php if ($isAuthor){?>
-                                <td>
-                                    <div class="d-flex justify-content-center gap-3">
+                        
+                            <td>
+                                <div class="d-flex justify-content-center gap-3">
 
-                                        <!-- Affichage information du trajet (modale) -->
-                                        <a href="homepage.php?id=<?= $trajet['id'] ?>" class="text-dark">
-                                            <i class="bi bi-eye fs-5"></i>
-                                        </a>
+                                    <!-- Affichage information du trajet (modale) -->
+                                    <a href="homepage.php?id=<?= $trajet['id'] ?>" class="text-dark">
+                                        <i class="bi bi-eye fs-5"></i>
+                                    </a>
+                                    <?php $isAuthor=$trajetController->isAuthor($_SESSION['user_id'],$trajet['id']) ?>
+                                    <?php if ($isAuthor){?>
 
                                         <!-- Modification du trajet -->
                                         <a href="edit_trajet.php?id=<?= $trajet['id'] ?>" class="text-dark">
@@ -85,9 +86,9 @@ $modalDetails=$trajetController->getDetailsTrajet($modalTrajetId)
                                                 <i class="bi bi-trash3 fs-5"></i>
                                             </button>
                                         </form>
-                                    </div>
-                                </td>
-                            <?php }} ?>
+                                        <?php }} ?>
+                                </div>
+                            </td>
                         </tr>
                     <?php } ?>
                 </tbody>
